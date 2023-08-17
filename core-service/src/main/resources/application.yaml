@@ -1,0 +1,14 @@
+server:
+  port: 8189
+  servlet:
+    context-path: /core
+spring:
+  flyway:
+    locations: classpath:db/migration
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/market
+    username: postgres
+    password: Bb123456789
+  jpa:
+    show-sql: true

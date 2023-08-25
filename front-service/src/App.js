@@ -1,4 +1,4 @@
-import {Container, Navbar, Row} from "react-bootstrap";
+import {Container, Navbar} from "react-bootstrap";
 import "./styles/App.css"
 import Products from "./pages/Products";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom"

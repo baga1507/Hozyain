@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useFetching} from "../hooks/useFetching";
-import {PostService} from "../components/API/ProductService";
+import {ProductService} from "../components/API/ProductService";
 import {Row} from "react-bootstrap";
 import Filters from "../components/Filters";
 import ProductItem from "../components/ProductItem";
@@ -9,7 +9,7 @@ const Products = () => {
     const [products, setProducts] = useState([])
     const [filter, setFilter] = useState({min_price: null, max_price: null})
     const [fetchProducts, isProductsLoading, productsError] = useFetching(async (args) => {
-        let response = await PostService.getProducts(args)
+        let response = await ProductService.getProducts(args)
         setProducts(response.data)
     })
 

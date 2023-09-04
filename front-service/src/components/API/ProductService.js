@@ -1,8 +1,8 @@
 import axios from "axios"
 
-export class PostService {
+export class ProductService {
     static async getProducts(filter) {
-        let response = await axios.get("http://localhost:8189/core/products/all", {
+        let response = await axios.get("http://localhost:9000/core/products/all", {
             params: {
                 ...filter
             }

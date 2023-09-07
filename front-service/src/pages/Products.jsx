@@ -9,7 +9,7 @@ const Products = () => {
     const [products, setProducts] = useState([])
     const [filter, setFilter] = useState({min_price: null, max_price: null})
     const [fetchProducts, isProductsLoading, productsError] = useFetching(async (args) => {
-        let response = await ProductService.getProducts(args)
+        const response = await ProductService.getProducts(args)
         setProducts(response.data)
     })
 

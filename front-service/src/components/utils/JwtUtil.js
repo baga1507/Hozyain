@@ -9,6 +9,6 @@ export class JwtUtil {
     }
 
     static isValid(token) {
-        return !this.isExpired()
+        return !this.isExpired(token)
     }
 }

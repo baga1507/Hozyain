@@ -1,0 +1,18 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /market
+spring:
+  flyway:
+    locations: classpath:db/migration
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/market
+    username: postgres
+    password: Bb123456789
+  jpa:
+    show-sql: true
+
+jwt:
+  secret: fefdsaf3e3248923hfai
+  lifetime: 1080000

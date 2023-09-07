@@ -2,12 +2,11 @@ import axios from "axios";
 
 export class AuthorizationService {
     static async authenticate(email, password) {
-        let response = axios.post("http://localhost:8190/auth/auth", {
-            params: {
-                email,
-                password
+        const response = await axios.post("http://localhost:9000/market/auth", {email, password}, {
+            headers: {
+                "Content-Type": "application/json"
             }
         })
-        return response
+        return await response.data
     }
 }

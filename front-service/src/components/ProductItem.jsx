@@ -12,7 +12,7 @@ const ProductItem = ({title, price}) => {
             style={{marginTop: "10px", marginRight: "15px"}}
         >
             <Card.Img variant="top" src={require(image + title + ".jpg")} height="200px" width="200px"/>
-            <Card.Text as="h5" style={{alignSelf: "center", fontSize: "30px"}}>{title}</Card.Text>
+            <Card.Text as="h5" style={{alignSelf: "center", fontSize: "30px", backgroundColor: "transparent"}}>{title}</Card.Text>
             <div className="d-flex justify-content-between" style={{marginTop: "10px"}}>
                 <Card.Text style={{fontSize: "20px"}}>{price} ₽</Card.Text>
                 <Button style={{alignSelf: "start"}} variant="outline-warning">Купить</Button>

@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react';
 import {Alert, Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
-import {AuthorizationService} from "../components/API/AuthorizationService";
-import {AuthContext} from "../context/AuthContext";
-import {useFetching} from "../hooks/useFetching";
-import "../styles/Auth.css"
+import {AuthorizationService} from "../../components/API/AuthorizationService";
+import {AuthContext} from "../../context/AuthContext";
+import {useFetching} from "../../hooks/useFetching";
+import "./Auth.css"
 import axios from "axios";
 
 const Auth = () => {

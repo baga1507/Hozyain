@@ -1,6 +1,5 @@
 package com.hozyain.backend.configs;
 
-import com.hozyain.backend.controllers.JwtRequestFilter;
 import com.hozyain.backend.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

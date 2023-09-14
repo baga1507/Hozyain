@@ -1,4 +1,4 @@
-package com.hozyain.backend.controllers;
+package com.hozyain.backend.configs;
 
 import com.hozyain.backend.utils.JwtUtil;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -34,8 +34,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             try {
                 username = jwtUtil.getUsernameFromToken(jwt);
             } catch (ExpiredJwtException e) {
-                System.out.println("What?");
-                log.trace("The token has expired");
+                log.debug("The token has expired");
             }
         }
 

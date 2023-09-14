@@ -4,6 +4,11 @@ export class JwtUtil {
         return jwt.exp * 1000
     }
 
+    static getEmail(token) {
+        let jwt = JSON.parse(atob(token.split('.')[1]))
+        return jwt.sub
+    }
+
     static isExpired(token) {
         return Date.now() > this.getExpiration(token)
     }

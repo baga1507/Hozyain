@@ -22,7 +22,7 @@ const Products = () => {
             <Filters filter={filter} setFilter={setFilter} fetchProducts={fetchProducts}/>
             <Row xs="auto">
                 {products.map(p =>
-                    <ProductItem title={p.title} price={p.price} key={p.id}/>
+                    <ProductItem id={p.id} title={p.title} price={p.price} key={p.id}/>
                 )}
             </Row>
         </div>

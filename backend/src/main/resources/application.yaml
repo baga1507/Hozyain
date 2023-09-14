@@ -15,4 +15,4 @@ spring:
 
 jwt:
   secret: fefdsaf3e3248923hfai
-  lifetime: 1080000
+  lifetime: 10000000

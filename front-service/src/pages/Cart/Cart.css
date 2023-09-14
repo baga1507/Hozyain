@@ -1,0 +1,10 @@
+.Cart {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-alert {
+    align-self: center;
+    width: 300px;
+}
+

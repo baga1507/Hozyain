@@ -3,10 +3,10 @@ import {Alert, Button, Form, FormControl, FormGroup, FormLabel} from "react-boot
 import {AuthorizationService} from "../../components/API/AuthorizationService";
 import {AuthContext} from "../../context/AuthContext";
 import {useFetching} from "../../hooks/useFetching";
-import "./Auth.css"
+import "./Login.css"
 import axios from "axios";
 
-const Auth = () => {
+const Login = () => {
     let email;
     let password;
     const {setIsAuth} = useContext(AuthContext)
@@ -25,15 +25,16 @@ const Auth = () => {
     })
 
     return (
-        <div className="Auth">
+        <div className="Login">
+            <h3>Вход</h3>
             {isFailed &&
                 <Alert variant="danger">Неправильный логин или пароль</Alert>
             }
-            <Form className="authForm" onSubmit={authenticate}>
+            <Form className="auth-form" onSubmit={authenticate}>
                 <FormGroup>
                     <FormLabel>Email</FormLabel>
                     <FormControl
-                        type="text"
+                        type="email"
                         placeholder="Введите свою электронную почту"
                         value={email}
                         onChange={e => email = e.target.value}
@@ -48,10 +49,13 @@ const Auth = () => {
                         onChange={e => password = e.target.value}
                     />
                 </FormGroup>
-                <Button style={{marginTop: "5px"}} type="submit" variant="outline-primary">Войти</Button>
+                <div className="login-submit">
+                    <text className="login-submit__text">Нет аккаунта? <a href="/sign-up">Зарегистрируйтесь!</a></text>
+                    <Button className="login-submit__button" type="submit" variant="outline-primary">Войти</Button>
+                </div>
             </Form>
         </div>
     );
 };
 
-export default Auth;
+export default Login;

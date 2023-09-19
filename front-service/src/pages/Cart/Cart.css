@@ -3,8 +3,12 @@
     flex-direction: column;
 }
 
-.order-alert {
+.order-create {
     align-self: center;
-    width: 300px;
+    width: 230px;
 }
 
+.order-empty {
+    align-self: center;
+    width: 370px;
+}

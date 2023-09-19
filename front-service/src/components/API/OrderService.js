@@ -8,4 +8,20 @@ export class OrderService {
             }
         })
     }
+
+    static async get(id) {
+        return await axios.get("http://localhost:9000/market/orders/get", {
+            params: {
+                id
+            }
+        })
+    }
+
+    static async getUserOrders() {
+        return await axios.get("http://localhost:9000/market/orders/get/all", {
+            params: {
+                email: localStorage.getItem("email")
+            }
+        })
+    }
 }

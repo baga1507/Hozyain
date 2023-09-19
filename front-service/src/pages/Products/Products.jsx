@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {useFetching} from "../hooks/useFetching";
-import {ProductService} from "../components/API/ProductService";
+import {useFetching} from "../../hooks/useFetching";
+import {ProductService} from "../../components/API/ProductService";
 import {Row} from "react-bootstrap";
-import Filters from "../components/Filters";
-import ProductItem from "../components/ProductItem";
+import Filters from "../../components/Filters";
+import ProductItem from "../../components/ProductItem";
 
 const Products = () => {
     const [products, setProducts] = useState([])

@@ -28,6 +28,7 @@ const MyNavbar = () => {
                                 <Nav.Link eventKey="2" onClick={() => {setKey("2"); router("/about")}}>О нас</Nav.Link>
                             </NavItem>
                             <NavDropdown title={localStorage.getItem("email")}>
+                                <NavDropdown.Item onClick={() => {setKey("0"); router("/orders")}}>Заказы</NavDropdown.Item>
                                 <NavDropdown.Item onClick={() => {setKey("0"); router("/cart")}}>Корзина</NavDropdown.Item>
                                 <NavDropdown.Divider/>
                                 <NavDropdown.Item onClick={exit}>Выход</NavDropdown.Item>

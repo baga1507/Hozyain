@@ -7,6 +7,7 @@ import com.hozyain.backend.dto.CartItemDto;
 import com.hozyain.backend.entities.Cart;
 import com.hozyain.backend.entities.CartItem;
 import com.hozyain.backend.entities.Product;
+import com.hozyain.backend.entities.User;
 import com.hozyain.backend.exceptions.ProductNotFoundException;
 import com.hozyain.backend.repositories.CartItemRepository;
 import com.hozyain.backend.repositories.CartRepository;
@@ -26,6 +27,13 @@ public class CartService {
     private final CartRepository cartRepository;
     private final CartItemConverter itemConverter;
     private final CartConverter cartConverter;
+
+    public void createCart(User user) {
+        Cart cart = new Cart();
+        cart.setUser(user);
+        cart.setTotalPrice(0);
+        cartRepository.save(cart);
+    }
 
     @Transactional
     public CartItemDto addToCart(String email, Long productId) {

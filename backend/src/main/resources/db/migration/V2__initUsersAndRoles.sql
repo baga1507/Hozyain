@@ -14,7 +14,7 @@ CREATE TABLE roles (
 );
 
 CREATE TABLE users_roles (
-                             user_id BIGSERIAL NOT NULL REFERENCES users (id),
+                             user_id BIGSERIAL NOT NULL REFERENCES users (id) ON DELETE CASCADE,
                              role_id BIGSERIAL NOT NULL REFERENCES roles (id),
                              PRIMARY KEY (user_id, role_id)
 );

@@ -7,7 +7,7 @@ const AppRouter = () => {
     const {isAuth} = useContext(AuthContext)
 
     return (
-        <div className="content">
+        <div>
             {isAuth
                 ?
                 <Routes>

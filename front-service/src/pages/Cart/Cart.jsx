@@ -7,8 +7,9 @@ import "./Cart.css"
 
 const Cart = () => {
     const [cart, setCart] = useState({items: []})
+    const [isEmptyCreated, setIsEmptyCreated] = useState(false)
     const [isOrderCreated, setIsOrderCreated] = useState(false)
-    const [fetchCart, isCartLoading, CartError] = useFetching(async () => {
+    const [fetchCart, isCartLoading, cartError] = useFetching(async () => {
         const cart =  await CartService.get()
         setCart(cart)
     })
@@ -18,9 +19,13 @@ const Cart = () => {
     }, [])
 
     async function createOrder() {
-        await OrderService.create()
-        fetchCart()
-        setIsOrderCreated(true)
+        if (cart.items.length === 0) {
+            setIsEmptyCreated(true)
+        } else {
+            await OrderService.create()
+            fetchCart()
+            setIsOrderCreated(true)
+        }
     }
 
     async function addToCart(item) {
@@ -32,10 +37,13 @@ const Cart = () => {
     return (
         <div className="Cart">
             {isOrderCreated &&
-                <Alert className="order-alert" variant="primary">Заказ успешно оформлен!</Alert>
+                <Alert className="order-create" variant="primary">Заказ успешно оформлен!</Alert>
+            }
+            {isEmptyCreated &&
+                <Alert className="order-empty" variant="danger">Перед покупкой добавьте товары в корзину</Alert>
             }
             {!isCartLoading &&
-                <div className="Cart__content">
+                <div>
                     <Table hover>
                         <thead>
                             <tr>

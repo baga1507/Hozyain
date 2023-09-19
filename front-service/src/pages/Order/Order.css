@@ -1,0 +1,9 @@
+.Order {
+    display: flex;
+    flex-direction: column;
+}
+
+.Order__header {
+    margin-top: 20px;
+    align-self: center;
+}

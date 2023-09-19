@@ -1,8 +1,10 @@
 package com.hozyain.backend.entities;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -10,7 +12,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity(name = "carts")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +39,10 @@ public class Cart {
     @MapsId
     @JoinColumn(name = "user_id")
     private User user;
+
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
 
     public void clear() {
         items.clear();

@@ -1,0 +1,12 @@
+.Filters__content {
+    width: 275px;
+}
+
+.Filters__submit {
+    margin-top: 5px;
+}
+
+.Filters__reset {
+    margin-top: 5px;
+    margin-left: 10px;
+}

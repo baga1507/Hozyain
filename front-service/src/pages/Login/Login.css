@@ -2,11 +2,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: center;
     margin-top: 12%;
 }
 
+.bg {
+    position: absolute;
+    background-color: white;
+    height: 200px;
+    width: 450px;
+    border-radius: 10px;
+}
+
+.Login__content {
+    position: absolute;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    width: 70%;
+}
+
+
+
 .auth-form {
-    width: 30%;
+    width: 100%;
 }
 
 .login-submit {

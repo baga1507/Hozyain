@@ -28,8 +28,12 @@ function App() {
                 setIsAuth,
             }}>
                 <BrowserRouter>
-                    <MyNavbar/>
-                    <AppRouter/>
+                    <div className="App__navbar">
+                        <MyNavbar/>
+                    </div>
+                    <div className="App__content">
+                        <AppRouter/>
+                    </div>
                 </BrowserRouter>
             </AuthContext.Provider>
         </div>

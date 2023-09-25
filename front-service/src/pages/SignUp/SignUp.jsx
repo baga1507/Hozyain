@@ -36,48 +36,51 @@ const SignUp = () => {
 
     return (
         <div className="SignUp" onSubmit={signUp}>
-            <h3>Регистрация</h3>
-            <Form className="auth-form">
-                <FormGroup>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl
-                        className={isEmailValid ? "" : "is-invalid"}
-                        type="email"
-                        placeholder="Введите свою электронную почту"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <FormLabel>Пароль</FormLabel>
-                    <FormControl
-                        className={isPasswordValid ? "" : "is-invalid"}
-                        type="password"
-                        placeholder="Введите свой пароль"
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <FormControl
-                        className={isPasswordsMatch ? "" : "is-invalid"}
-                        type="password"
-                        placeholder="Подтвердите свой пароль"
-                        value={passwordRepeat}
-                        onChange={e => setPasswordRepeat(e.target.value)}
-                    />
-                </FormGroup>
-                <div className="login-submit">
-                    <text className="login-submit__text">Уже есть аккаунт? <a href="/login">Войдите!</a></text>
-                    <Button
-                        className="login-submit__button"
-                        type="submit"
-                        variant="outline-primary"
-                    >
-                        Зарегистрироваться
-                    </Button>
-                </div>
-            </Form>
+            <div className="bg"/>
+            <div className="SignUp__content">
+                <h3>Регистрация</h3>
+                <Form className="auth-form">
+                    <FormGroup>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl
+                            className={isEmailValid ? "" : "is-invalid"}
+                            type="email"
+                            placeholder="Введите свою электронную почту"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <FormLabel>Пароль</FormLabel>
+                        <FormControl
+                            className={isPasswordValid ? "" : "is-invalid"}
+                            type="password"
+                            placeholder="Введите свой пароль"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <FormControl
+                            className={isPasswordsMatch ? "" : "is-invalid"}
+                            type="password"
+                            placeholder="Подтвердите свой пароль"
+                            value={passwordRepeat}
+                            onChange={e => setPasswordRepeat(e.target.value)}
+                        />
+                    </FormGroup>
+                    <div className="login-submit">
+                        <text className="login-submit__text">Уже есть аккаунт? <a href="/login">Войдите!</a></text>
+                        <Button
+                            className="login-submit__button"
+                            type="submit"
+                            variant="outline-primary"
+                        >
+                            Принять
+                        </Button>
+                    </div>
+                </Form>
+            </div>
         </div>
     );
 };

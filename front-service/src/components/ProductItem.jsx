@@ -18,13 +18,13 @@ const ProductItem = ({id, title, price}) => {
         <Card
             className="d-flex justify-content-between"
             bg="light"
-            text="light"
+            text="dark"
             style={{marginRight: "15px"}}
         >
             <Card.Img variant="top" src={require(image + title + ".jpg")} height="200px" width="200px"/>
-            <Card.Text as="h5" style={{alignSelf: "center", fontSize: "30px", color: "black"}}>{title}</Card.Text>
+            <Card.Text as="h5" style={{alignSelf: "center", fontSize: "30px"}}>{title}</Card.Text>
             <div className="d-flex justify-content-between" style={{marginTop: "10px"}}>
-                <Card.Text style={{fontSize: "20px", color: "black"}}>{price} ₽</Card.Text>
+                <Card.Text style={{fontSize: "20px"}}>{price} ₽</Card.Text>
                 <Button style={{alignSelf: "start"}} variant="outline-danger" onClick={addToCart}>+</Button>
             </div>
             <br/>

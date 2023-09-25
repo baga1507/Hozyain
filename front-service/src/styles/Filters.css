@@ -1,5 +1,9 @@
-.Filters__content {
+.Filters__content__form {
     width: 275px;
+}
+
+.Filters__show {
+    margin-top: 2px;
 }
 
 .Filters__submit {

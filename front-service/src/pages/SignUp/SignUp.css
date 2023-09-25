@@ -5,6 +5,24 @@
     margin-top: 12%;
 }
 
+.bg {
+    position: absolute;
+    background-color: white;
+    height: 300px;
+    width: 450px;
+    border-radius: 20px;
+}
+
+.SignUp__content {
+    position: absolute;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    margin-top: 10px;
+}
+
 .auth-form {
     width: 30%;
 }

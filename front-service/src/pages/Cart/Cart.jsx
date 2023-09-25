@@ -72,11 +72,18 @@ const Cart = () => {
                                 <td>{item.price} ₽</td>
                             </tr>
                         )}
+                        <tr>
+                            <td><h4>Итого:</h4></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><h5>{cart.totalPrice} ₽</h5></td>
+                        </tr>
                         </tbody>
                     </Table>
                     <div style={{display: "flex", justifyContent: "space-between"}}>
-                        <h4>Итого: {cart.totalPrice} ₽</h4>
-                        <Button variant="primary" onClick={createOrder}>Оформить заказ</Button>
+                        <h4></h4>
+                        <Button variant="danger" onClick={createOrder}>Оформить заказ</Button>
                     </div>
                 </div>
             }

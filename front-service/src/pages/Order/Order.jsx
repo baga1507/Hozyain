@@ -24,7 +24,7 @@ const Order = () => {
             </div>
             {!isOrderLoading &&
                 <div>
-                    <Table hover>
+                    <Table hover striped>
                         <thead>
                         <tr>
                             <th></th>
@@ -52,11 +52,15 @@ const Order = () => {
                                 <td>{item.totalPrice} ₽</td>
                             </tr>
                         )}
+                        <tr>
+                            <td><h4>Итого:</h4></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><h5>{order.totalPrice} ₽</h5></td>
+                        </tr>
                         </tbody>
                     </Table>
-                    <div>
-                        <h4>Итого: {order.totalPrice} ₽</h4>
-                    </div>
                 </div>
             }
         </div>

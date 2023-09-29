@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Table} from "react-bootstrap";
 import {useFetching} from "../../hooks/useFetching";
 import {OrderService} from "../../components/API/OrderService";

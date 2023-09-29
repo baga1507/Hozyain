@@ -5,17 +5,24 @@ import {AuthContext} from "../../context/AuthContext";
 import {useFetching} from "../../hooks/useFetching";
 import "./Login.css"
 import axios from "axios";
+import {JwtUtil} from "../../components/utils/JwtUtil";
 
 const Login = () => {
     let email;
     let password;
-    const {setIsAuth} = useContext(AuthContext)
+    const {setIsAuth, setIsAdmin} = useContext(AuthContext)
     const [isFailed, setIsFailed] = useState(false)
     const [authenticate, isAuthLoading, authError] = useFetching(async(e) => {
         e.preventDefault()
         try {
             const token = (await AuthorizationService.authenticate(email, password))["token"]
             localStorage.setItem("token", token)
+            localStorage.setItem("email", JwtUtil.getEmail(token))
+            for (const role of JwtUtil.getRoles(token)) {
+                if (role === "ROLE_ADMIN") {
+                    setIsAdmin(true)
+                }
+            }
             axios.defaults.headers["Authorization"] = "Bearer " + token
             setIsAuth(true)
         } catch (e) {
@@ -26,12 +33,12 @@ const Login = () => {
 
     return (
         <div className="Login">
+            {isFailed &&
+                <Alert className="login-alert" variant="danger">Неправильный логин или пароль</Alert>
+            }
             <div className="bg"></div>
             <div className="Login__content">
                 <h3>Вход</h3>
-                {isFailed &&
-                    <Alert variant="danger">Неправильный логин или пароль</Alert>
-                }
                 <Form className="auth-form" onSubmit={authenticate}>
                     <FormGroup>
                         <FormLabel>Email</FormLabel>

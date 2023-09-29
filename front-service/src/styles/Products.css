@@ -1,0 +1,9 @@
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons__add {
+    width: 100px;
+    height: 40px
+}

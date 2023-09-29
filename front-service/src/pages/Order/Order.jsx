@@ -4,6 +4,7 @@ import {useFetching} from "../../hooks/useFetching";
 import {OrderService} from "../../components/API/OrderService";
 import {Image, Table} from "react-bootstrap";
 import "./Order.css"
+import Item from "../../components/Item";
 
 const Order = () => {
     const params = useParams()
@@ -24,7 +25,7 @@ const Order = () => {
             </div>
             {!isOrderLoading &&
                 <div>
-                    <Table hover striped>
+                    <Table hover>
                         <thead>
                         <tr>
                             <th></th>
@@ -36,21 +37,7 @@ const Order = () => {
                         </thead>
                         <tbody>
                         {order.items.map(item =>
-                            <tr key={item.id}>
-                                <td>
-                                    <Image
-                                        src={require("../../components/images/" + item.productTitle + ".jpg")}
-                                        height="75px"
-                                        width="75px"
-                                    />
-                                </td>
-                                <td>{item.productTitle}</td>
-                                <td>{item.pricePerProduct} ₽</td>
-                                <td>
-                                    {item.quantity}
-                                </td>
-                                <td>{item.totalPrice} ₽</td>
-                            </tr>
+                            <Item item={item}/>
                         )}
                         <tr>
                             <td><h4>Итого:</h4></td>

@@ -7,8 +7,8 @@ CREATE TABLE products (
 );
 
 INSERT INTO products (title, price)
-VALUES ('Drill', 3200),
-       ('Screw', 15),
-       ('Bolt', 10),
-       ('Hammer', 150),
-       ('Jackhammer', 1390)
+VALUES ('Дрель', 3200),
+       ('Саморез', 15),
+       ('Болт', 10),
+       ('Молоток', 150),
+       ('Отбивной молоток', 1390)

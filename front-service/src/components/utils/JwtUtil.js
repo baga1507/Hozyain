@@ -9,6 +9,11 @@ export class JwtUtil {
         return jwt.sub
     }
 
+    static getRoles(token) {
+        let jwt = JSON.parse(atob(token.split('.')[1]))
+        return jwt.roles
+    }
+
     static isExpired(token) {
         return Date.now() > this.getExpiration(token)
     }

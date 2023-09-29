@@ -13,7 +13,7 @@ const SignUp = () => {
     const [isEmailValid, setIsEmailValid] = useState(true)
     const [isPasswordValid, setIsPasswordValid] = useState(true)
     const [isPasswordsMatch, setIsPasswordsMatch] = useState(true)
-    const {setIsAuth} = useContext(AuthContext)
+    const {setIsAuth, setIsAdmin} = useContext(AuthContext)
 
     async function signUp(e) {
         e.preventDefault()
@@ -21,9 +21,9 @@ const SignUp = () => {
             try {
                 const token = (await AuthorizationService.register(email, password))["token"]
                 localStorage.setItem("token", token)
+                localStorage.setItem("email", JwtUtil.getEmail(token))
                 axios.defaults.headers["Authorization"] = "Bearer " + token
                 setIsAuth(true)
-                localStorage.setItem("email", JwtUtil.getEmail(token))
             } catch (e) {
                 console.log(e.message)
             }

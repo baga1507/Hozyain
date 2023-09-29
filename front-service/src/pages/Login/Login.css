@@ -14,6 +14,11 @@
     border-radius: 10px;
 }
 
+.login-alert {
+    position: fixed;
+    top: 175px
+}
+
 .Login__content {
     position: absolute;
     align-self: center;

@@ -4,6 +4,8 @@ import {CartService} from "../../components/API/CartService";
 import {Alert, Button, Image, Table} from "react-bootstrap";
 import {OrderService} from "../../components/API/OrderService";
 import "./Cart.css"
+import {ProductService} from "../../components/API/ProductService";
+import Item from "../../components/Item";
 
 const Cart = () => {
     const [cart, setCart] = useState({items: []})
@@ -56,21 +58,7 @@ const Cart = () => {
                         </thead>
                         <tbody>
                         {cart.items.map(item =>
-                            <tr key={item.id}>
-                                <td>
-                                    <Image
-                                    src={require("../../components/images/" + item.productTitle + ".jpg")}
-                                    height="75px"
-                                    width="75px"
-                                    />
-                                </td>
-                                <td>{item.productTitle}</td>
-                                <td>{item.pricePerProduct} ₽</td>
-                                <td>
-                                    {item.quantity}
-                                </td>
-                                <td>{item.price} ₽</td>
-                            </tr>
+                            <Item item={item}/>
                         )}
                         <tr>
                             <td><h4>Итого:</h4></td>

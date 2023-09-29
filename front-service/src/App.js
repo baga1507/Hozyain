@@ -9,6 +9,7 @@ import AppRouter from "./components/AppRouter";
 
 function App() {
     const [isAuth, setIsAuth] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(false)
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -16,6 +17,11 @@ function App() {
             axios.defaults.headers["Authorization"] = "Bearer " + token
             setIsAuth(true)
             localStorage.setItem("email", JwtUtil.getEmail(token))
+            for (const role of JwtUtil.getRoles(token)) {
+                if (role === "ROLE_ADMIN") {
+                    setIsAdmin(true)
+                }
+            }
         } else {
             localStorage.removeItem("token")
             setIsAuth(false)
@@ -26,6 +32,8 @@ function App() {
             <AuthContext.Provider value={{
                 isAuth,
                 setIsAuth,
+                isAdmin,
+                setIsAdmin
             }}>
                 <BrowserRouter>
                     <div className="App__navbar">

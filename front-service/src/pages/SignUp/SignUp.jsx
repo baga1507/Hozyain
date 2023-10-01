@@ -22,6 +22,12 @@ const SignUp = () => {
                 const token = (await AuthorizationService.register(email, password))["token"]
                 localStorage.setItem("token", token)
                 localStorage.setItem("email", JwtUtil.getEmail(token))
+                setIsAdmin(false)
+                for (const role of JwtUtil.getRoles(token)) {
+                    if (role === "ROLE_ADMIN") {
+                        setIsAdmin(true)
+                    }
+                }
                 axios.defaults.headers["Authorization"] = "Bearer " + token
                 setIsAuth(true)
             } catch (e) {

@@ -18,6 +18,7 @@ const Login = () => {
             const token = (await AuthorizationService.authenticate(email, password))["token"]
             localStorage.setItem("token", token)
             localStorage.setItem("email", JwtUtil.getEmail(token))
+            setIsAdmin(false)
             for (const role of JwtUtil.getRoles(token)) {
                 if (role === "ROLE_ADMIN") {
                     setIsAdmin(true)

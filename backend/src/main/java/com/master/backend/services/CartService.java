@@ -15,8 +15,11 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +41,6 @@ public class CartService {
     @Transactional
     public CartItemDto addToCart(String email, Long productId) {
         Cart cart = userService.getUser(email).getCart();
-        Product product = productService.getProduct(productId);
         for (CartItem item: cart.getItems()) {
             if (Objects.equals(item.getProduct().getId(), productId)) {
                 item.setQuantity(item.getQuantity() + 1);
@@ -49,6 +51,7 @@ public class CartService {
             }
         }
 
+        Product product = productService.getProduct(productId);
         CartItem item = new CartItem();
         item.setProduct(product);
         item.setCart(cart);
@@ -61,31 +64,26 @@ public class CartService {
         return itemConverter.EntityToDto(item);
     }
 
+    @Transactional
+    public void removeFromCart(String email, Long itemId) {
+        Cart cart = userService.getUser(email).getCart();
+        CartItem item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new NoSuchElementException("Item hasn't been found"));
+        item.setQuantity(item.getQuantity() - 1);
+        cart.setTotalPrice(cart.getTotalPrice() - item.getPricePerProduct());
+        if (item.getQuantity() == 0) {
+            cart.getItems().remove(item);
+        }
+    }
+
     public CartDto getCart(String email) {
         Cart cart = userService.getUser(email).getCart();
         return cartConverter.EntityToDto(cart);
     }
 
     @Transactional
-    public CartDto removeItem(String email, Long itemId) {
-        Cart cart = userService.getUser(email).getCart();
-        for (CartItem item: cart.getItems()) {
-            if (Objects.equals(item.getId(), itemId)) {
-                cart.setTotalPrice(cart.getTotalPrice() - item.getPrice());
-                cart.getItems().remove(item);
-                return cartConverter.EntityToDto(cart);
-            }
-        }
-        throw new ProductNotFoundException("Item with id " + itemId + " is not found");
-    }
-
-    @Transactional
     public void clearCart(String email) {
         Cart cart = userService.getUser(email).getCart();
         cart.clear();
-    }
-
-    public List<CartDto> getAllCarts() {
-        return cartRepository.findAll().stream().map(cartConverter::EntityToDto).toList();
     }
 }

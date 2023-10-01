@@ -44,6 +44,8 @@ public class ProductController {
             return new ResponseEntity<>(product, HttpStatus.CREATED);
         } catch (InvalidImageException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }
     }
 }

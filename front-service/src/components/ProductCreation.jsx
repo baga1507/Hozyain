@@ -3,7 +3,7 @@ import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import "../styles/CreateProduct.css"
 import {ProductService} from "./API/ProductService";
 
-const ProductCreation = () => {
+const ProductCreation = ({products, setProducts}) => {
     const [show, setShow] = useState(false)
     const [selectedImage, setSelectedImage] = useState(null)
     const [title, setTitle] = useState("")
@@ -12,7 +12,7 @@ const ProductCreation = () => {
     const [isPriceValid, setIsPriceValid] = useState(true)
     const [isImageValid, setIsImageValid] = useState(true)
 
-    function createProduct(e) {
+     async function createProduct(e) {
         e.preventDefault()
         setIsTitleValid(title.length > 0)
         setIsPriceValid(price > 0)
@@ -21,8 +21,17 @@ const ProductCreation = () => {
 
         const imageData = new FormData()
         imageData.append("image", selectedImage, "fileName")
-        ProductService.createProduct(imageData, title, price)
-        window.location.reload()
+        try {
+            const newProduct = await ProductService.createProduct(imageData, title, price)
+            setProducts([...products, newProduct])
+            setSelectedImage(null)
+            setTitle("")
+            setPrice(0)
+        } catch (e) {
+            if (e.response.status === 406) {
+                setIsTitleValid(false)
+            }
+        }
     }
 
     function handleImageChange(e) {

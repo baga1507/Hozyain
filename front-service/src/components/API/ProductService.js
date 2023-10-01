@@ -21,7 +21,6 @@ export class ProductService {
     }
 
     static async createProduct(image, title, price) {
-        console.log(image)
         const response = await axios.post("http://localhost:9000/market/products/create", image, {
             params: {
                 title,

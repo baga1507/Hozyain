@@ -4,7 +4,7 @@ import {useFetching} from "../../hooks/useFetching";
 import {OrderService} from "../../components/API/OrderService";
 import {Image, Table} from "react-bootstrap";
 import "./Order.css"
-import Item from "../../components/Item";
+import OrderItem from "../../components/OrderItem";
 
 const Order = () => {
     const params = useParams()
@@ -37,7 +37,7 @@ const Order = () => {
                         </thead>
                         <tbody>
                         {order.items.map(item =>
-                            <Item item={item}/>
+                            <OrderItem item={item}/>
                         )}
                         <tr>
                             <td><h4>Итого:</h4></td>

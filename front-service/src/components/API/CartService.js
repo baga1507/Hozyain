@@ -5,18 +5,25 @@ export class CartService {
         await axios.post("http://localhost:9000/market/carts/add", null, {
             params: {
                 product_id,
-                email: localStorage.getItem("email")
             }
         })
         console.log("Все ок!")
     }
 
-    static async get() {
-        const response = await axios.get("http://localhost:9000/market/carts/get", {
+    static async remove(item_id) {
+        await axios.post("http://localhost:9000/market/carts/remove", null, {
             params: {
-                email: localStorage.getItem("email")
+                item_id
             }
         })
+    }
+
+    static async get() {
+        const response = await axios.get("http://localhost:9000/market/carts/get")
         return response.data
+    }
+
+    static async clear() {
+        await axios.post("http://localhost:9000/market/carts/clear")
     }
 }

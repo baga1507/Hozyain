@@ -42,16 +42,12 @@ public class JwtUtil {
                 .compact();
     }
 
-    public String getUsernameFromToken(String token) {
+    public String getEmailFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
     public List<String> getRoles(String token) {
         return getClaimFromToken(token, (Function<Claims, List<String>>) claims -> claims.get("roles", List.class));
-    }
-
-    public String getEmail(String token) {
-        return getClaimFromToken(token, (Function<Claims,String>) claims -> claims.get("email", String.class));
     }
 
     private <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {

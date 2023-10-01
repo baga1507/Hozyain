@@ -26,7 +26,7 @@ const Products = () => {
             <div className="buttons">
                 <Filters filter={filter} setFilter={setFilter} fetchProducts={fetchProducts}/>
                 {isAdmin &&
-                    <ProductCreation/>
+                    <ProductCreation products={products} setProducts={setProducts}/>
                 }
             </div>
             <Row xs="auto">
